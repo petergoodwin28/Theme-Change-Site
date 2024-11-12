@@ -2,20 +2,425 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+body {
+  @apply bg-background text-foreground;
+  /* font-family: Arial, Helvetica, sans-serif; */
 }
 
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .lighter {
+    --background: #ffffff; /* pure white for background */
+    --foreground: #000000; /* black for contrast on white */
+    --card: #ffffff; /* white for card background */
+    --card-foreground: #000000; /* black for text on cards */
+    --popover: #ffffff; /* white for popover */
+    --popover-foreground: #000000; /* black for readability */
+
+    --primary: #0658af; /* blue for primary elements */
+    --primary-foreground: #ffffff; /* white for primary text */
+
+    --secondary: #aa1b20; /* red for secondary elements */
+    --secondary-foreground: #ffffff; /* white to complement red background */
+
+    --muted: #f0f0f0; /* light gray for muted backgrounds */
+    --muted-foreground: #000000; /* black for muted text */
+
+    --accent: #aa1b20; /* prominent bright red as an accent color */
+    --accent-foreground: #ffffff; /* white on red for readability */
+
+    --destructive: #aa1b20; /* bright red for destructive actions */
+    --destructive-foreground: #ffffff; /* white foreground for contrast */
+
+    --border: #dddddd; /* light gray for borders */
+    --input: #0658af; /* blue for input background */
+    --ring: #0658af; /* blue ring for focus indication */
+
+    /* Chart colors */
+    --chart-1: #aa1b20; /* prominent bright red */
+    --chart-2: #ffffff; /* white */
+    --chart-3: #0658af; /* prominent blue */
+    --chart-4: #0658af; /* blue */
+    --chart-5: #aa1b20; /* bright red for strong contrast */
+
+    --sidebar-background: #ffffff; /* pure white for sidebar background */
+    --sidebar-foreground: #000000; /* black for sidebar text */
+    --sidebar-primary: #0658af; /* blue for sidebar primary */
+    --sidebar-primary-foreground: #ffffff; /* white for sidebar primary text */
+    --sidebar-accent: #aa1b20; /* bright red for sidebar accent */
+    --sidebar-accent-foreground: #ffffff; /* white for sidebar accent text */
+    --sidebar-border: #dddddd; /* light gray for sidebar borders */
+    --sidebar-ring: #0658af; /* blue for sidebar ring */
+  }
+
+  .dark {
+    --background: #000000; /* pure black for background */
+    --foreground: #ffffff; /* white for better contrast on black */
+    --card: #000000; /* black for card background */
+    --card-foreground: #ffffff; /* white for text on cards */
+    --popover: #000000; /* black for popover */
+    --popover-foreground: #ffffff; /* white for readability */
+
+    --primary: #0658af; /* brighter blue for primary elements */
+    --primary-foreground: #ffffff; /* white for primary text */
+
+    --secondary: #aa1b20; /* brighter red for secondary elements */
+    --secondary-foreground: #ffffff; /* white to complement red background */
+
+    --muted: #000000; /* black for muted backgrounds */
+    --muted-foreground: #ffffff; /* white for muted text */
+
+    --accent: #aa1b20; /* prominent bright red as an accent color */
+    --accent-foreground: #ffffff; /* white on red for readability */
+
+    --destructive: #aa1b20; /* bright red for destructive actions */
+    --destructive-foreground: #ffffff; /* white foreground for contrast */
+
+    --border: #ffffff; /* white for borders */
+    --input: #0658af; /* brighter blue for input background */
+    --ring: #0658af; /* brighter blue ring for focus indication */
+
+    /* Chart colors */
+    --chart-1: #aa1b20; /* prominent bright red */
+    --chart-2: #000000; /* black */
+    --chart-3: #0658af; /* prominent bright blue */
+    --chart-4: #0658af; /* brighter blue */
+    --chart-5: #aa1b20; /* bright red for strong contrast */
+
+    --sidebar-background: #000000; /* pure black for sidebar background */
+    --sidebar-foreground: #ffffff; /* white for sidebar text */
+    --sidebar-primary: #0658af; /* brighter blue for sidebar primary */
+    --sidebar-primary-foreground: #ffffff; /* white for sidebar primary text */
+    --sidebar-accent: #aa1b20; /* bright red for sidebar accent */
+    --sidebar-accent-foreground: #ffffff; /* white for sidebar accent text */
+    --sidebar-border: #ffffff; /* white for sidebar borders */
+    --sidebar-ring: #0658af; /* brighter blue for sidebar ring */
+  }
+
+  .number-marine {
+    --background: #000000; /* pure black for background */
+    --foreground: #ffffff; /* white for better contrast on black */
+    --card: #000000; /* black for card background */
+    --card-foreground: #ffffff; /* white for text on cards */
+    --popover: #000000; /* black for popover */
+    --popover-foreground: #ffffff; /* white for readability */
+
+    --primary: #0f1e48; /* blue for primary elements */
+    --primary-foreground: #ffffff; /* white for primary text */
+
+    --secondary: #7e252c; /* red for secondary elements */
+    --secondary-foreground: #ffffff; /* white to complement red background */
+
+    --muted: #000000; /* black for muted backgrounds */
+    --muted-foreground: #ffffff; /* white for muted text */
+
+    --accent: #7e252c; /* prominent red as an accent color */
+    --accent-foreground: #ffffff; /* white on red for readability */
+
+    --destructive: #7e252c; /* red for destructive actions */
+    --destructive-foreground: #ffffff; /* white foreground for contrast */
+
+    --border: #ffffff; /* white for borders */
+    --input: #0f1e48; /* blue for input background */
+    --ring: #0f1e48; /* blue ring for focus indication */
+
+    /* Chart colors */
+    --chart-1: #7e252c; /* prominent red */
+    --chart-2: #000000; /* black */
+    --chart-3: #0f1e48; /* prominent blue */
+    --chart-4: #0f1e48; /* blue */
+    --chart-5: #7e252c; /* red for strong contrast */
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /*     --background: 
+    --foreground: #312d2e; */
+
+  .battle {
+    --background: #0e0402; /* black background */
+    --foreground: #d96128; /* grey for contrast against black */
+
+    --card: #250e07; /* brown for card background */
+    --card-foreground: #312d2e; /* grey for card text */
+
+    --popover: #250e07; /* brown for popover background */
+    --popover-foreground: #312d2e; /* grey for readability */
+
+    --primary: #d96128; /* light orange for primary elements */
+    --primary-foreground: #0e0402; /* black for primary text */
+
+    --secondary: #cc481b; /* dark orange for secondary elements */
+    --secondary-foreground: #0e0402; /* black to complement secondary background */
+
+    --muted: #250e07; /* brown for muted backgrounds */
+    --muted-foreground: #312d2e; /* grey for muted text readability */
+
+    --accent: #cc481b; /* dark orange as an accent color */
+    --accent-foreground: #0e0402; /* black on orange for readability */
+
+    --destructive: #cc481b; /* dark orange for destructive actions */
+    --destructive-foreground: #0e0402; /* black foreground for contrast */
+
+    --border: #0e0402; /* pure black for borders */
+    --input: #d96128; /* light orange for input background */
+    --ring: #0658af; /* subtle ring indication */
+
+    /* Chart colors */
+    --chart-1: #d96128; /* light orange */
+    --chart-2: #0e0402; /* black */
+    --chart-3: #cc481b; /* dark orange */
+    --chart-4: #0658af; /* bright blue for a pop of color in charts */
+    --chart-5: #0e0402; /* black for strong contrast */
+
+    /* Sidebar colors */
+    --sidebar-background: #0e0402; /* black for sidebar background */
+    --sidebar-foreground: #ffffff; /* white for sidebar text */
+
+    --sidebar-primary: #d96128; /* light orange for sidebar primary elements */
+    --sidebar-primary-foreground: #0e0402; /* black for primary text in sidebar */
+
+    --sidebar-accent: #cc481b; /* dark orange for sidebar accent elements */
+    --sidebar-accent-foreground: #ffffff; /* white for contrast on orange accent */
+
+    --sidebar-border: #312d2e; /* grey for sidebar borders */
+    --sidebar-ring: #0658af; /* blue ring for sidebar focus indication */
+  }
+
+  .gold {
+    --background: #1f1c22; /* dark theme background using light black */
+    --foreground: #cab8aa; /* light tan for better contrast */
+    --card: #1f1c22; /* card background aligned with the main background */
+    --card-foreground: #cab8aa; /* light tan for text on cards */
+    --popover: #1f1c22; /* same as background for consistency */
+    --popover-foreground: #cab8aa; /* tan for readability */
+
+    --primary: #cab8aa; /* tan for primary elements */
+    --primary-foreground: #1f1c22; /* dark foreground for primary text */
+
+    --secondary: #7e252c; /* red for secondary elements */
+    --secondary-foreground: #cab8aa; /* light tan to complement red background */
+
+    --muted: #1f1c22; /* muted backgrounds */
+    --muted-foreground: #cab8aa; /* tan for muted text for readability */
+
+    --accent: #0f1e48; /* blue as an accent color */
+    --accent-foreground: #cab8aa; /* tan on blue for readability */
+
+    --destructive: #7e252c; /* red for destructive actions */
+    --destructive-foreground: #cab8aa; /* tan foreground for contrast */
+
+    --border: #000000; /* pure black for borders */
+    --input: #1f1c22; /* input background similar to general background */
+    --ring: #0f1e48; /* subtle blue ring for focus indication */
+
+    /* Chart colors */
+    --chart-1: #cab8aa; /* tan */
+    --chart-2: #1f1c22; /* light black */
+    --chart-3: #7e252c; /* red */
+    --chart-4: #0f1e48; /* blue */
+    --chart-5: #000000; /* black for strong contrast */
+
+    /* Sidebar colors */
+    --sidebar-background: #1c2125; /* black for sidebar background */
+    --sidebar-foreground: #dfe0e5; /* grey for sidebar text */
+
+    --sidebar-primary: #fab840; /* yellow for sidebar primary elements */
+    --sidebar-primary-foreground: #1c2125; /* black for primary text in sidebar */
+
+    --sidebar-accent: #ba0001; /* red for sidebar accent elements */
+    --sidebar-accent-foreground: #dfe0e5; /* grey for contrast on red accent */
+
+    --sidebar-border: #dfe0e5; /* grey for sidebar borders */
+    --sidebar-ring: #304986; /* blue ring for focus indication in sidebar */
+  }
+
+  /* .dark {
+    --background: 240 10% 3.9%; 
+    --foreground: 0 0% 98%; 
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  } */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+/* hero */
+
+.hero p {
+  text-wrap: wrap;
+  overflow: hidden;
+  background-color: #2f8d46;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: 25%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 150px;
+  font-size: 120px;
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: "Steelfish Rg", "helvetica neue", helvetica, arial, sans-serif;
+  font-weight: 800;
+  -webkit-font-smoothing: antialiased;
 }
+
+
+
+#about h1 {
+  margin-top: 15rem;
+  font-weight: 100;
+  font-size: xx-large;
+
+  animation: appear 3s linear forwards;
+  animation-timeline: scroll();
+  animation-range-start: contain;
+  animation-range-end: 3000px;
+}
+
+/* #about:nth-child(0) {
+  animation-range-start: entry;
+  animation-range-end: 300px;
+}
+#about:nth-child(1) {
+  animation-range-start: entry 300px;
+  animation-range-end: 1000px;
+}
+#about:nth-child(2) {
+  animation-range-start: entry;
+  animation-range-end: 700px;
+}
+#about:nth-child(3) {
+  animation-range-start: entry;
+  animation-range-end: 900px;
+} */
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: translateY(500%) scale(0);
+    
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-1000%) scale(0);
+  }
+}
+
+
+.slide-across {
+  animation: slide-right 5s linear forwards;
+  animation-timeline: scroll();
+  animation-range-start: cover;
+  animation-range-end: 3000px;
+}
+
+@keyframes slide-right {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(90%);
+  }
+}
+
+
+/* .hero p {
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: 50%;
+
+
+  margin-top: 200px;
+  color: #000000;
+  font-size: 120px;
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: "Steelfish Rg", "helvetica neue", helvetica, arial, sans-serif;
+  font-weight: 800;
+
+  mix-blend-mode: difference;
+  -webkit-font-smoothing: antialiased;
+} */
